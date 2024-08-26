@@ -1,0 +1,184 @@
+import java.util.Scanner;
+
+public class LoopSwitch {
+
+	public static void main(String[] args) {
+		int n;
+		String ch;
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println("------Switch------");
+			System.out.println("1.Prime\t\t2.Palindrome\t\t3.Reverse\t4.Armstrong\t5.Sum of Digit\n6.Factorial\t7.Fibonacci Series\t8.Power\t\t9.Neon\t\t10.EXIT");
+			System.out.println("Enter your choice : ");
+			ch = sc.nextLine();
+			
+			switch (ch) {
+			case "Prime":
+				int x=1;
+				System.out.println("Enter Number : ");
+				n = sc.nextInt();
+				sc.nextLine();
+				for(int i=2;i<n/2;i++) {
+					if(n % 2 == 0) {
+						x = 0;
+						break;
+					}
+				}
+				if(x == 1 )
+					System.out.println("Prime Number !!");
+				else 
+					System.out.println("Not a Prime Number !!");
+			
+	            break;
+				
+			case "Palindrome":
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				
+				if(n == Integer.parseInt(new StringBuffer(n+"").reverse().toString()))
+					System.out.println("Palindrome");
+				else
+					System.out.println("NOT Palindrome");
+				sc.nextLine();
+	            break;
+	            
+			case "Armstrong":
+				int result=0,sum=0,temp,cnt=0,r,i;
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				temp = n;
+				while(n!=0) {
+					n = n/10;
+					cnt++;
+				}
+				n=temp;
+				while(n != 0) {
+					r = n % 10;
+					i = 1;
+					result = 1;
+					while(i <= cnt) {
+						result = result * r;
+						i++;
+					}
+					sum = sum + result;
+					n = n/10;
+				}
+				if(sum == temp) {
+					System.out.println(""+temp+"= "+sum);
+					System.out.println("Armstrong Number");
+				}
+				else {
+					System.out.println(""+temp+"!= "+sum);
+					System.out.println("NOT Armstrong Number");
+				}
+				sc.nextLine();
+	            break;
+				
+			case "Reverse":
+				int rem,reverse=0;
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				
+				while(n > 0) {
+					rem = n % 10;
+					reverse = reverse * 10 + rem;
+					n = n/10;
+				}
+				System.out.println("Reverse Number : "+reverse);
+				
+				sc.nextLine();
+	            break;
+				
+			
+			case "Sum of Digit":
+				int j,sum1=0;
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				
+				for(j = 1; j <= n; j++) {
+					sum1 = sum1 + j;
+				}
+				System.out.println("Sum = "+sum1);
+				sc.nextLine();
+	            break;
+				
+			case "Factorial":
+				int result1=1,k;
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				
+				for(k=2 ;k<=n;k++) {
+					result1 = result1 * k;
+				}
+				System.out.println("Factorial = "+result1);
+				sc.nextLine();
+	            break;
+				
+			case "Fibonacci Series":
+			    System.out.println("Enter the number of terms: ");
+			    n = sc.nextInt();
+			    sc.nextLine(); 
+
+			    int firstTerm = 0, secondTerm = 1;
+			    System.out.println("Fibonacci Series up to " + n + " terms:");
+
+			    for (int l = 1; l <= n; ++l) {
+			        System.out.print(firstTerm + " ");
+			       
+			        int nextTerm = firstTerm + secondTerm;
+			        firstTerm = secondTerm;
+			        secondTerm = nextTerm;
+			    }
+			    System.out.println();
+	            break;
+			    
+			case "Power":
+				int m,ans;
+				 System.out.println("Enter the n and power: ");
+				 n = sc.nextInt();
+				 m = sc.nextInt();
+				 
+				 ans = (int) Math.pow(n, m);
+				 System.out.println(" "+n+" raise to "+m+" = "+ans);
+				 sc.nextLine();
+		         break;
+				
+			case "Neon":
+				int sum2=0,temp1,sq,rem1;
+				System.out.println("Enter number : ");
+				n = sc.nextInt();
+				
+				sq=n*n;
+				temp1=n;
+				while(sq > 0) {
+					rem1 = sq % 10;
+					sum2 = sum2 + rem1;
+					sq = sq/10;
+				}
+				if(temp1==sum2) {
+					System.out.println("temp  "+temp1+"= "+sum2);
+					System.out.println("It is neon number");
+				}
+				else {
+					System.out.println("temp  "+temp1+"!= "+sum2);
+					System.out.println("It is NOT neon number");
+				}
+				sc.nextLine();
+	            break;
+				
+				
+			case "EXIT":
+				System.out.println("Exited!!!");
+				break;
+			default:
+				System.out.println("Invalid choice!!");
+				break;
+			}
+			
+		}
+		while(!ch.equals("EXIT")); 
+		
+	}
+
+}
